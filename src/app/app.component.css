@@ -1,0 +1,23 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  max-width: 400px;
+}
+
+.separator {
+  width: 80%;
+  height: 4px;
+  background-color: #FFF;
+  margin-top: 20px;
+}
