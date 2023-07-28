@@ -30,12 +30,22 @@ header {
   border-radius: 0.3125rem;
   border: 3px solid #FFF;
   background: #FFDF24 !important;
-  font-family: "Open Sans", serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   align-self: end;
   justify-self: end;
   cursor: pointer;
-  margin-left: 70%;
+  margin-left: 80%;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+p {
+  color: #FFF;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.5625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.21875rem;
+  padding-bottom: 10px;
 }

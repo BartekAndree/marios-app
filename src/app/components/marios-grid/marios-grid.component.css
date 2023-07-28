@@ -6,6 +6,7 @@
 
 mat-grid-list {
   width: 65rem;
+  margin-bottom: 15px;
 }
 
 
@@ -23,8 +24,7 @@ mat-grid-tile {
   height: 160px;
   background-color: #ffffff;
   padding-left: 6px;
-  border-radius: 5px;
-}
+  border-radius: 5px;}
 
 .inner-column {
   display: flex;

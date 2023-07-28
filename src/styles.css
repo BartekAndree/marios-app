@@ -2,8 +2,17 @@
 
 html {
   height: 100%;
-  background: linear-gradient(180deg, #E74850 8.33%, #236FE9 27.08%, #4286F4 55.73%);
+  background: linear-gradient(180deg, #E74850 8.33%, #236FE9 27.08%, #4286F4 55.73%) no-repeat fixed;
+  background-size: cover;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  max-width: 1037px;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
