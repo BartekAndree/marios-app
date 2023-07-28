@@ -13,6 +13,11 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { MariosGridComponent } from './components/marios-grid/marios-grid.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import { ReceivedComponent } from './components/received/received.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SentComponent } from './components/sent/sent.component';
+import { AddMariosComponent } from './components/add-marios/add-marios.component';
+import { BackButtonComponent } from './components/shared/back-button/back-button.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,11 @@ import {MatGridListModule} from "@angular/material/grid-list";
     HomeComponent,
     StatsComponent,
     MariosGridComponent,
+    ReceivedComponent,
+    ProfileComponent,
+    SentComponent,
+    AddMariosComponent,
+    BackButtonComponent,
   ],
   imports: [
     BrowserModule,

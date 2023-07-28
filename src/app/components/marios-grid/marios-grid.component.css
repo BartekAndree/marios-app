@@ -24,7 +24,9 @@ mat-grid-tile {
   height: 160px;
   background-color: #ffffff;
   padding-left: 6px;
-  border-radius: 5px;}
+  border-radius: 5px;
+}
+
 
 .inner-column {
   display: flex;
@@ -37,6 +39,7 @@ mat-grid-tile {
 .inner-column > img {
   margin-right: 8px;
 }
+
 .marios-container > div > p {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
@@ -55,6 +58,7 @@ mat-grid-tile {
 .see-more {
   color: #000000;
 }
+
 a {
   text-decoration: none;
   color: #000000;
