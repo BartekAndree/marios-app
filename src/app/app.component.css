@@ -16,8 +16,26 @@ header {
 }
 
 .separator {
-  width: 80%;
-  height: 4px;
+  width: 64.8125rem;
+  height: 0.25rem;
   background-color: #FFF;
   margin-top: 20px;
+}
+
+.btn {
+  width: 11.8125rem;
+  max-width: 11.8125rem;
+  height: 2.8125rem;
+  flex-shrink: 0;
+  border-radius: 0.3125rem;
+  border: 3px solid #FFF;
+  background: #FFDF24 !important;
+  font-family: "Open Sans", serif;
+  font-weight: bold;
+  align-self: end;
+  justify-self: end;
+  cursor: pointer;
+  margin-left: 70%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

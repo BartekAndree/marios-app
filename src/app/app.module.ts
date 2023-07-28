@@ -9,12 +9,17 @@ import {NgOptimizedImage} from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StatsComponent } from './components/stats/stats.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import { MariosGridComponent } from './components/marios-grid/marios-grid.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     StatsComponent,
+    MariosGridComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +28,9 @@ import {MatCardModule} from "@angular/material/card";
     NgOptimizedImage,
     BrowserAnimationsModule,
     MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
