@@ -1,0 +1,50 @@
+mat-dialog-content {
+  width: 714px;
+  height: 222px;
+  flex-shrink: 0;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 16px;
+  cursor: pointer;
+
+}
+
+.from-container {
+  color: #EA808E;
+  font-family: Open Sans, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 8px;
+}
+
+.title-container {
+  color: #494949;
+  font-family: Open Sans, sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 28px;
+}
+
+.comment-container {
+  color: #A1A1A1;
+  font-family: Open Sans, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  max-width: 578px;;
+}
