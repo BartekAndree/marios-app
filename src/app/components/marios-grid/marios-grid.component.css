@@ -16,6 +16,11 @@ mat-grid-tile {
   border-radius: 0.3125rem;
   background: #FFF;
 }
+mat-grid-tile:hover{
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.25rem);
+}
 
 .marios-container {
   display: flex;
