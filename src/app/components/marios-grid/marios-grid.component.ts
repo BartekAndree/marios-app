@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {MariosDialogComponent} from "../shared/marios-dialog/marios-dialog.component";
+import {Marios} from "../../interfaces/marios";
 
 @Component({
   selector: 'app-marios-grid',
@@ -8,6 +9,8 @@ import {MariosDialogComponent} from "../shared/marios-dialog/marios-dialog.compo
   styleUrls: ['./marios-grid.component.css']
 })
 export class MariosGridComponent {
+  @Input() marios: Marios[] = [];
+
   constructor(public dialog: MatDialog) {
   }
 

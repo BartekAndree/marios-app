@@ -8,7 +8,7 @@ import {Marios} from "../interfaces/marios";
   providedIn: 'root'
 })
 export class UserService {
-  private usersUrl: string = 'user/';
+  private usersUrl: string = 'api/user/';
   private usersData: PublicUser[] = [];
   private publicUsers$ = new BehaviorSubject<PublicUser[]>([]);
 

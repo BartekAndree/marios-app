@@ -1,15 +1,15 @@
 <div class="card-container">
-  <mat-grid-list cols="3" rowHeight="2:1" gutterSize="20">
-    <mat-grid-tile>
+  <mat-grid-list cols="3" rowHeight="2:1" gutterSize="20" >
+    <mat-grid-tile *ngFor="let singleMarios of marios">
       <div class="marios-container">
         <div class="inner-column">
           <img src="assets/person-icon.svg" alt=""/>
-          <p class="author">From: Angela Marcus</p>
+          <p class="author">From: {{ singleMarios.senderId}}</p>
         </div>
 
         <div class="inner-column">
           <img src="assets/star-icon.svg" alt=""/>
-          <p>Thank you</p>
+          <p>{{ singleMarios.type }}</p>
         </div>
 
         <div class="inner-column">
@@ -18,19 +18,13 @@
 
         <div class="inner-column">
           <p class="comment">
-            I wanted to give you marios for your excellent team leadership...
-            <span class="see-more"><a (click)="openDialog()">See more</a></span>
+            {{ singleMarios.comment }}
+            <span class="see-more">
+              <a (click)="openDialog()">See more</a>
+            </span>
           </p>
         </div>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-    <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
-    <mat-grid-tile>5</mat-grid-tile>
-    <mat-grid-tile>6</mat-grid-tile>
-    <mat-grid-tile>7</mat-grid-tile>
-    <mat-grid-tile>8</mat-grid-tile>
-    <mat-grid-tile>9</mat-grid-tile>
   </mat-grid-list>
 </div>
