@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {MariosGridComponent} from "../../marios-grid/marios-grid.component";
+import {Marios} from "../../../interfaces/marios";
 
 @Component({
   selector: 'app-marios-dialog',

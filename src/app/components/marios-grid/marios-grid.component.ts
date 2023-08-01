@@ -14,6 +14,9 @@ export class MariosGridComponent {
   constructor(public dialog: MatDialog) {
   }
 
+  ngOnInit() {
+  }
+
   openDialog() {
     this.dialog.open(MariosDialogComponent);
   }

@@ -12,8 +12,60 @@ export class UserService {
   private usersData: PublicUser[] = [];
   private publicUsers$ = new BehaviorSubject<PublicUser[]>([]);
 
+  private USER: string = "d339b931-f7dd-4a55-ac20-abfdff1d948b";
+  public allMarios: Marios[] = [];
+  public receivedMarios: Marios[] = [];
+  public sentMarios: Marios[] = [];
+  private allMarios$ = new BehaviorSubject<Marios[]>(this.allMarios);
+  private receivedMarios$ = new BehaviorSubject<Marios[]>(this.receivedMarios);
+  private sentMarios$ = new BehaviorSubject<Marios[]>(this.sentMarios);
+
   constructor(private http: HttpClient) {
   }
+
+  get AllMarios(): Observable<Marios[]> {
+    if(this.allMarios.length === 0) {
+      this.fetchAllMarios();
+    }
+    return this.allMarios$.asObservable();
+  }
+
+  fetchAllMarios() {
+    return this.getAllMariosByUuid(this.USER).subscribe((data) => {
+      this.allMarios = data;
+      this.allMarios$.next(data);
+    });
+  }
+
+  get ReceivedMarios(): Observable<Marios[]> {
+    if(this.receivedMarios.length === 0) {
+      this.fetchReceivedMarios();
+    }
+    return this.receivedMarios$.asObservable();
+  }
+
+  fetchReceivedMarios() {
+    return this.getReceivedMariosByUuid(this.USER).subscribe((data) => {
+      this.receivedMarios = data;
+      this.receivedMarios$.next(data);
+    });
+  }
+
+  get SentMarios(): Observable<Marios[]> {
+    if(this.sentMarios.length === 0) {
+      this.fetchSentMarios();
+    }
+    return this.sentMarios$.asObservable();
+  }
+
+  fetchSentMarios() {
+    return this.getSentMariosByUuid(this.USER).subscribe((data) => {
+      this.sentMarios = data;
+      this.sentMarios$.next(data);
+    });
+  }
+
+
 
   get users() {
     if (this.usersData.length === 0) {

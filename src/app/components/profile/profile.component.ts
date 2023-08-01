@@ -10,15 +10,25 @@ import {Observable} from "rxjs";
 })
 export class ProfileComponent {
 
-  private USER: string = "d339b931-f7dd-4a55-ac20-abfdff1d948b";
   public allMarios: Marios[] = [];
+  public receivedMarios: Marios[] = [];
+  public sentMarios: Marios[] = [];
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.userService.getAllMariosByUuid(this.USER).subscribe(data => {
-      this.allMarios = data
-    })
+    this.userService.AllMarios
+      .subscribe((marios: Marios[]) => {
+        this.allMarios = marios;
+      })
+    this.userService.ReceivedMarios
+    .subscribe((marios: Marios[]) => {
+        this.receivedMarios = marios;
+      })
+    this.userService.SentMarios
+      .subscribe((marios: Marios[]) => {
+        this.sentMarios = marios;
+      })
   }
 }
