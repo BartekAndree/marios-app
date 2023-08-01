@@ -20,6 +20,10 @@ import {AddMariosComponent} from './components/add-marios/add-marios.component';
 import {BackButtonComponent} from './components/shared/back-button/back-button.component';
 import {MariosDialogComponent} from './components/shared/marios-dialog/marios-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -45,6 +49,11 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatIconModule,
     MatGridListModule,
     MatDialogModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -67,7 +67,7 @@ export class UserService {
 
 
 
-  get users() {
+  get publicUsers() {
     if (this.usersData.length === 0) {
       this.fetchUsers();
     }
