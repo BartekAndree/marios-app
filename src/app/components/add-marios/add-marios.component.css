@@ -1,12 +1,111 @@
-.form-container{
-    width: 1040px;
-    height: 587px;
-    top: 251px;
-    left: 203px;
-    border-radius: 5px;
-    background-color: #ffffff;
+.form-container {
+  width: 1040px;
+  height: 587px;
+  margin: 20px auto;
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 20px;
 }
 
-.chip-list{
+.separator {
   width: 100%;
+  height: 3px;
+  background: #FCCF00;
+  margin: 10px 0;
 }
+
+.user-input,
+.category-input,
+.title-input,
+.comment-input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #000;
+  font-family: Open Sans, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+select,
+input,
+textarea {
+  width: 978px;
+  padding: 10px;
+  font-size: 18px;
+  resize: none;
+  border-radius: 5px;
+  border: 2px solid #BABABA;
+  background: #FFF;
+}
+
+button {
+  background-color: #FCCF00;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #d1b200;
+}
+
+svg {
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+  color: #FCCF00;
+  margin-right: 10px;
+}
+.character-count {
+  color: #8D8080;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.submit-button {
+  float: right;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 3px solid #141414;
+  background: #FFDF24;
+  font-family: Open Sans,sans-serif;
+  width: 120px;
+  height: 45px;
+  flex-shrink: 0;
+  color: #141414;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  background-color: #d1b200;
+}
+
+::placeholder{
+  color: #BABABA;
+  font-family: Open Sans, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+

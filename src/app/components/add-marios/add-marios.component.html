@@ -1,31 +1,56 @@
 <app-back-button url="/profile" buttonText="BACK"></app-back-button>
 
 <div class="form-container">
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="user-input">
+      <label for="user-select">Who you want to recognize?</label>
+      <select id="user-select" formControlName="selectedUser">
+        <option *ngFor="let user of users" [value]="user.uuid">{{ user.userName }}</option>
+      </select>
+      <div *ngIf="form.get('selectedUser')?.hasError('required') && form.get('selectedUser')?.touched">
+        Selecting a user is required.
+      </div>
+    </div>
 
+    <div class="separator"></div>
 
-    <mat-form-field class="chip-list">
-      <mat-label>Who you want to recognize?</mat-label>
-      <mat-chip-grid #chipGrid aria-label="Fruit selection">
-        <mat-chip-row *ngFor="let fruit of fruits" (removed)="remove(fruit)">
-          {{fruit}}
-          <button matChipRemove [attr.aria-label]="'remove ' + fruit">
-            <mat-icon>cancel</mat-icon>
-          </button>
-        </mat-chip-row>
-      </mat-chip-grid>
-      <input #fruitInput [formControl]="fruitCtrl"
-             [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
-             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-             (matChipInputTokenEnd)="add($event)"/>
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-        <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-          {{fruit}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+    <div class="category-input">
+      <label for="category-select">Select category:</label>
+      <select id="category-select" formControlName="selectedCategory">
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+      <div *ngIf="form.get('selectedCategory')?.hasError('required') && form.get('selectedCategory')?.touched">
+        Selecting a category is required.
+      </div>
+    </div>
 
+    <div class="separator"></div>
 
+    <div class="title-input">
+      <label for="title">Title:</label>
+      <input type="text" id="title" formControlName="title" placeholder="Enter marios title">
+      <div *ngIf="form.get('title')?.hasError('required') && form.get('title')?.touched">
+        Title is required.
+      </div>
+      <div *ngIf="form.get('title')?.hasError('maxLength') && form.get('title')?.touched">
+        Title cannot be longer than 100 characters.
+      </div>
+    </div>
 
+    <div class="separator"></div>
+
+    <div class="comment-input">
+      <label for="comment">Comment:</label>
+      <textarea id="comment" formControlName="comment" rows="3" cols="50" maxlength="255"></textarea>
+      <div *ngIf="form.get('comment')?.hasError('required') && form.get('comment')?.touched">
+        Comment is required.
+      </div>
+      <div *ngIf="form.get('comment')?.hasError('maxLength') && form.get('comment')?.touched">
+        Comment cannot be longer than 255 characters.
+      </div>
+      <div class="character-count">{{ form.get('comment')?.value.lenght }}/255</div>
+    </div>
+
+    <button type="submit" class="submit-button">SEND</button>
   </form>
 </div>

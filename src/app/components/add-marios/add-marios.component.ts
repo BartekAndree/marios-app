@@ -1,74 +1,54 @@
-import {Component, ElementRef, inject, ViewChild} from "@angular/core";
-import {COMMA, ENTER} from "@angular/cdk/keycodes";
-import {FormControl} from "@angular/forms";
-import {map, Observable, startWith} from "rxjs";
-import {LiveAnnouncer} from "@angular/cdk/a11y";
-import {MatChipInputEvent} from "@angular/material/chips";
-import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
-import {PublicUser} from "../../interfaces/user";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from "../../services/user.service";
+import { PublicUser } from "../../interfaces/user";
+import { MariosService } from "../../services/marios.service";
+import {PayloadMarios} from "../../interfaces/marios";
 
-/**
- * @title Chips Autocomplete
- */
 @Component({
   selector: 'app-add-marios',
-  templateUrl: './add-marios.component.html',
-  styleUrls: ['./add-marios.component.css'],
+  templateUrl: 'add-marios.component.html',
+  styleUrls: ['add-marios.component.css']
 })
-export class AddMariosComponent {
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl('');
-  filteredFruits: Observable<string[]>;
-  fruits: string[] = ['Lemon'];
-  users: PublicUser[] = []
-  allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
-  allUsers: PublicUser[] = []
+export class AddMariosComponent implements OnInit {
+  form: FormGroup;
+  users: PublicUser[] = [];
+  categories: string[] = [];
 
-  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement> = {} as ElementRef;
-  @ViewChild('userInput') userInput: ElementRef<HTMLInputElement> = {} as ElementRef;
-
-  announcer = inject(LiveAnnouncer);
-
-  constructor() {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-      startWith(null),
-      map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allFruits.slice())),
-    );
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private mariosService: MariosService) {
+    this.form = this.formBuilder.group({
+      selectedUser: ['', Validators.required],
+      selectedCategory: ['', Validators.required],
+      title: ['', [Validators.required, Validators.maxLength(100)]],
+      comment: ['', [Validators.required, Validators.maxLength(255)]]
+    });
   }
 
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+  ngOnInit(): void {
+    this.userService.publicUsers
+      .subscribe((data: PublicUser[]) => {
+        this.users = data;
+        this.users = this.userService.removeElementFromPublicUserListByUUID(this.users, this.userService.getCurrentUser);
+      })
+    this.categories = this.mariosService.categories;
+  }
 
-    // Add our fruit
-    if (value) {
-      this.fruits.push(value);
+  onSubmit(): void {
+    if (this.form.invalid) {
+      console.error('Form is not valid. Please fill all required fields properly.');
+      return;
     }
-
-    // Clear the input value
-    event.chipInput!.clear();
-
-    this.fruitCtrl.setValue(null);
-  }
-
-  remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
-
-    if (index >= 0) {
-      this.fruits.splice(index, 1);
-
-      this.announcer.announce(`Removed ${fruit}`);
+    console.log(this.form.value);
+    let payloadMarios: PayloadMarios = {
+      senderId: this.userService.getCurrentUser,
+      receiverId: this.form.value.selectedUser,
+      type: this.form.value.selectedCategory,
+      title: this.form.value.title,
+      comment: this.form.value.comment
     }
-  }
-
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.allFruits.filter(fruit => fruit.toLowerCase().includes(filterValue));
+    this.mariosService.addMarios(payloadMarios);
+    this.form.reset();
   }
 }

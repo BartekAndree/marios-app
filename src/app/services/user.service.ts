@@ -12,7 +12,7 @@ export class UserService {
   private usersData: PublicUser[] = [];
   private publicUsers$ = new BehaviorSubject<PublicUser[]>([]);
 
-  private USER: string = "d339b931-f7dd-4a55-ac20-abfdff1d948b";
+  private currentUser: string = "a5d3cf25-d840-445d-b4fc-a88ec2decbba";
   public allMarios: Marios[] = [];
   public receivedMarios: Marios[] = [];
   public sentMarios: Marios[] = [];
@@ -21,6 +21,9 @@ export class UserService {
   private sentMarios$ = new BehaviorSubject<Marios[]>(this.sentMarios);
 
   constructor(private http: HttpClient) {
+  }
+  get getCurrentUser(): string {
+    return this.currentUser;
   }
 
   get AllMarios(): Observable<Marios[]> {
@@ -31,8 +34,9 @@ export class UserService {
   }
 
   fetchAllMarios() {
-    return this.getAllMariosByUuid(this.USER).subscribe((data) => {
+    return this.getAllMariosByUuid(this.currentUser).subscribe((data) => {
       this.allMarios = data;
+      this.allMarios.reverse();
       this.allMarios$.next(data);
     });
   }
@@ -45,8 +49,9 @@ export class UserService {
   }
 
   fetchReceivedMarios() {
-    return this.getReceivedMariosByUuid(this.USER).subscribe((data) => {
+    return this.getReceivedMariosByUuid(this.currentUser).subscribe((data) => {
       this.receivedMarios = data;
+      this.receivedMarios.reverse();
       this.receivedMarios$.next(data);
     });
   }
@@ -59,12 +64,12 @@ export class UserService {
   }
 
   fetchSentMarios() {
-    return this.getSentMariosByUuid(this.USER).subscribe((data) => {
+    return this.getSentMariosByUuid(this.currentUser).subscribe((data) => {
       this.sentMarios = data;
+      this.sentMarios.reverse();
       this.sentMarios$.next(data);
     });
   }
-
 
 
   get publicUsers() {
@@ -95,6 +100,9 @@ export class UserService {
   }
   getSentMariosByUuid(uuid: string): Observable<Marios[]> {
     return this.http.get<Marios[]>(this.usersUrl + uuid + '/given');
+  }
+  removeElementFromPublicUserListByUUID(arr: PublicUser[], uuidToRemove: string): PublicUser[] {
+    return arr.filter((user) => user.uuid !== uuidToRemove);
   }
 
 }

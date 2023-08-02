@@ -8,5 +8,5 @@ export interface User {
 
 export interface PublicUser {
   uuid: string;
-  username: string;
+  userName: string;
 }
