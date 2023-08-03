@@ -1,14 +1,21 @@
 <div class="card-container">
   <mat-grid-list cols="3" rowHeight="2:1" gutterSize="20">
-    <mat-grid-tile *ngFor="let singleMarios of marios">
+    <mat-grid-tile *ngFor="let singleMarios of marios; let i = index">
       <div class="marios-container">
         <div class="inner-column">
           <img src="assets/person-icon.svg" alt=""/>
-          <p class="author">From: {{ singleMarios.senderId}}</p>
-        </div>
+          <p class="author" *ngIf="checkIfSenderIsMe(singleMarios.senderId, userService.getCurrentUser)" >
+            To:
+            {{ findUserNameByUuid(singleMarios.receiverId) }}
+          </p>
+          <p class="author" *ngIf="!checkIfSenderIsMe(singleMarios.senderId, userService.getCurrentUser)">
+            From:
+            {{ findUserNameByUuid(singleMarios.senderId) }}
+          </p>
+          </div>
 
         <div class="inner-column">
-          <img src="assets/star-icon.svg" alt=""/>
+          <img src="assets/star-icon.svg" alt="star"/>
           <p>{{ singleMarios.type }}</p>
         </div>
 
@@ -18,9 +25,9 @@
 
         <div class="inner-column">
           <p class="comment">
-            {{ singleMarios.comment }}
+            {{ truncateComment(singleMarios.comment) }}
             <span class="see-more">
-              <a (click)="openDialog()">See more</a>
+              <a (click)="openDialog(i)">See more</a>
             </span>
           </p>
         </div>

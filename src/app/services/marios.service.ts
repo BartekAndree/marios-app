@@ -7,7 +7,14 @@ import {Marios, PayloadMarios} from "../interfaces/marios";
 })
 export class MariosService {
   mariosUrl: string = 'api/marios/';
-  categories: string[] =['Thank You', 'Impressive', 'Exceptional', 'Good Job', 'WOW!','Im Proud']
+  categories: string[] =[
+    'Thank You',
+    'Impressive',
+    'Exceptional',
+    'Good Job',
+    'WOW!',
+    'Im Proud'
+  ]
 
   constructor(private http:HttpClient) { }
 

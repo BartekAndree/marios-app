@@ -1,19 +1,28 @@
 <div class="dialog-header">
   <a class="close-button" (click)="onCloseClick()">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M1.35355 0.519005C1.15829 0.323743 0.841709 0.323743 0.646447 0.519005C0.451184 0.714267 0.451184 1.03085 0.646447 1.22611L7.29289 7.87256L0.646447 14.519C0.451184 14.7143 0.451184 15.0308 0.646447 15.2261C0.841709 15.4214 1.15829 15.4214 1.35355 15.2261L8 8.57967L14.6464 15.2261C14.8417 15.4214 15.1583 15.4214 15.3536 15.2261C15.5488 15.0308 15.5488 14.7143 15.3536 14.519L8.70711 7.87256L15.3536 1.22611C15.5488 1.03085 15.5488 0.714267 15.3536 0.519005C15.1583 0.323743 14.8417 0.323743 14.6464 0.519005L8 7.16545L1.35355 0.519005Z" fill="black"/>
+      <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M1.35355 0.519005C1.15829 0.323743 0.841709 0.323743 0.646447 0.519005C0.451184 0.714267 0.451184 1.03085 0.646447 1.22611L7.29289 7.87256L0.646447 14.519C0.451184 14.7143 0.451184 15.0308 0.646447 15.2261C0.841709 15.4214 1.15829 15.4214 1.35355 15.2261L8 8.57967L14.6464 15.2261C14.8417 15.4214 15.1583 15.4214 15.3536 15.2261C15.5488 15.0308 15.5488 14.7143 15.3536 14.519L8.70711 7.87256L15.3536 1.22611C15.5488 1.03085 15.5488 0.714267 15.3536 0.519005C15.1583 0.323743 14.8417 0.323743 14.6464 0.519005L8 7.16545L1.35355 0.519005Z"
+            fill="black"/>
     </svg>
   </a>
 </div>
 
 <mat-dialog-content>
-  <div class="from-container">
-    <span>From: Angela Marcus</span>
+  <div class="top-container">
+    <div class="from-container">
+      <span>From: {{ data.user }}</span>
+    </div>
+    <div class="type-container">
+      <img src="assets/star-icon.svg" alt=""/>
+      <span>{{ data.marios.type }}</span>
+    </div>
   </div>
+
   <div class="title-container">
-    <span>You did great today Monica!</span>
+    <span>{{ data.marios.title }}</span>
   </div>
   <div class="comment-container">
-    <span>I wanted to give you marios for your excellent team leadership. I really appreciate your-hard work and commitment. Keep going!</span>
+    <span>{{ data.marios.comment }}</span>
   </div>
 </mat-dialog-content>

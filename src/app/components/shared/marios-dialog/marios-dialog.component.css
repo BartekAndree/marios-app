@@ -48,3 +48,18 @@ mat-dialog-content {
   line-height: normal;
   max-width: 578px;;
 }
+
+.top-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.type-container{
+  color: #000;
+  font-family: Open Sans;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-left: -140px;
+}

@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject, Input} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MariosGridComponent} from "../../marios-grid/marios-grid.component";
 import {Marios} from "../../../interfaces/marios";
 
@@ -9,8 +9,10 @@ import {Marios} from "../../../interfaces/marios";
   styleUrls: ['./marios-dialog.component.css']
 })
 export class MariosDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<MariosGridComponent>) {}
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { marios: Marios, user: string },
+              public dialogRef: MatDialogRef<MariosGridComponent>) {
+  }
 
   onCloseClick(): void {
     this.dialogRef.close();

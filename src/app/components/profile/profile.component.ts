@@ -21,7 +21,7 @@ export class ProfileComponent {
     this.userService.AllMarios
       .subscribe((marios: Marios[]) => {
         this.allMarios = marios;
-        this.allMarios.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+        this.allMarios.sort((a, b) => b.timestamp.getDate() - a.timestamp.getDate());
       })
     this.userService.ReceivedMarios
     .subscribe((marios: Marios[]) => {
