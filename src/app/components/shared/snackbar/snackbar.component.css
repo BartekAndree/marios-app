@@ -1,0 +1,19 @@
+mat-form-field {
+  margin-right: 12px;
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.snackbar-success{
+  background-color: #43a047;
+  color: white;
+}
+
+.snackbar-failure{
+  background-color: #d32f2f;
+  color: white;
+}

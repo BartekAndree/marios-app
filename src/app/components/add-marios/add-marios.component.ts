@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from "../../services/user.service";
-import { PublicUser } from "../../interfaces/user";
-import { MariosService } from "../../services/marios.service";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from "../../services/user.service";
+import {PublicUser} from "../../interfaces/user";
+import {MariosService} from "../../services/marios.service";
 import {PayloadMarios} from "../../interfaces/marios";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {SnackbarComponent} from "../shared/snackbar/snackbar.component";
 
 @Component({
   selector: 'app-add-marios',
@@ -17,8 +19,10 @@ export class AddMariosComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private mariosService: MariosService) {
-    this.form = this.formBuilder.group({
+              private mariosService: MariosService,
+              private _snackBar: MatSnackBar) {
+    this
+      .form = this.formBuilder.group({
       selectedUser: ['', Validators.required],
       selectedCategory: ['', Validators.required],
       title: ['', [Validators.required, Validators.maxLength(100)]],
@@ -26,7 +30,9 @@ export class AddMariosComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit()
+    :
+    void {
     this.userService.publicUsers
       .subscribe((data: PublicUser[]) => {
         this.users = data;
@@ -35,8 +41,11 @@ export class AddMariosComponent implements OnInit {
     this.categories = this.mariosService.categories;
   }
 
-  onSubmit(): void {
-    if (this.form.invalid) {
+  onSubmit()
+    :
+    void {
+    if (this.form.invalid
+    ) {
       console.error('Form is not valid. Please fill all required fields properly.');
       return;
     }
@@ -49,6 +58,11 @@ export class AddMariosComponent implements OnInit {
       comment: this.form.value.comment
     }
     this.mariosService.addMarios(payloadMarios);
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: 5000,
+      data: {message: 'Mario sent successfully!', action: 'Close'},
+      panelClass: 'snackbar-success',
+    });
     this.form.reset();
   }
 }
