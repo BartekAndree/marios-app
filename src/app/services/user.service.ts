@@ -12,7 +12,7 @@ export class UserService {
   private usersData: PublicUser[] = [];
   private publicUsers$ = new BehaviorSubject<PublicUser[]>([]);
 
-  private currentUser: string = "b4e0b038-b4d8-4cac-b347-09a1a4b130a7";
+  private currentUser: string = "eafcb0c3-a46a-41a7-a918-bbae1505fbab";
   public allMarios: Marios[] = [];
   public receivedMarios: Marios[] = [];
   public sentMarios: Marios[] = [];
