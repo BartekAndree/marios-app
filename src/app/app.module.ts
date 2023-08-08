@@ -25,6 +25,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     BrowserAnimationsModule,
     MatChipsModule,
     MatSnackBarModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

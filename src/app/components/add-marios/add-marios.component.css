@@ -44,6 +44,14 @@ textarea {
   border: 2px solid #BABABA;
   background: #FFF;
 }
+mat-form-field{
+  width: 978px;
+  font-size: 18px;
+  resize: none;
+  border-radius: 5px;
+  border: 2px solid #BABABA;
+  background: #FFF;
+}
 
 button {
   background-color: #FCCF00;
@@ -54,7 +62,6 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 10px 0;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -107,5 +114,6 @@ svg {
   font-weight: 700;
   line-height: normal;
 }
+
 
 

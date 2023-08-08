@@ -23,7 +23,6 @@ describe('My First Test', () => {
     cy.contains("Mario sent successfully!");
     cy.contains("BACK").click();
     cy.url().should('include', '/profile');
-    cy.wait(1000);
     cy.get('.number.sent').invoke('text').then((text) => {
       countAfter = Number(text);
     });

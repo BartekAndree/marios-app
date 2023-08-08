@@ -41,28 +41,29 @@ export class AddMariosComponent implements OnInit {
     this.categories = this.mariosService.categories;
   }
 
-  onSubmit()
-    :
-    void {
-    if (this.form.invalid
-    ) {
-      console.error('Form is not valid. Please fill all required fields properly.');
-      return;
-    }
+  onSubmit(): void {
     console.log(this.form.value);
-    let payloadMarios: PayloadMarios = {
-      senderId: this.userService.getCurrentUser,
-      receiverId: this.form.value.selectedUser,
-      type: this.form.value.selectedCategory,
-      title: this.form.value.title,
-      comment: this.form.value.comment
+
+    if (this.form.invalid) {
+      console.error('Form is not valid. Please fill all required fields properly.');
+    } else {
+      for (let singleSelectedUser of this.form.value.selectedUser) {
+        let payloadMarios: PayloadMarios = {
+          senderId: this.userService.getCurrentUser,
+          receiverId: singleSelectedUser,
+          type: this.form.value.selectedCategory,
+          title: this.form.value.title,
+          comment: this.form.value.comment
+        }
+        this.mariosService.addMarios(payloadMarios);
+      }
+
+      this._snackBar.openFromComponent(SnackbarComponent, {
+        duration: 5000,
+        data: {message: 'Mario sent successfully!', action: 'Close'},
+        panelClass: 'snackbar-success',
+      });
+      this.form.reset();
     }
-    this.mariosService.addMarios(payloadMarios);
-    this._snackBar.openFromComponent(SnackbarComponent, {
-      duration: 5000,
-      data: {message: 'Mario sent successfully!', action: 'Close'},
-      panelClass: 'snackbar-success',
-    });
-    this.form.reset();
   }
 }

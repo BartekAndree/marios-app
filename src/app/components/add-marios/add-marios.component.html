@@ -3,14 +3,18 @@
 <div class="form-container">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="user-input">
-      <label for="user-select">Who you want to recognize?</label>
-      <select id="user-select" formControlName="selectedUser">
-        <option *ngFor="let user of users" [value]="user.uuid">{{ user.userName }}</option>
-      </select>
+      <label for="user-select">Who do you want to recognize?</label>
+      <mat-form-field>
+        <mat-select id="user-select" multiple formControlName="selectedUser">
+          <mat-option *ngFor="let user of users" [value]="user.uuid">{{ user.userName }}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <div *ngIf="form.get('selectedUser')?.hasError('required') && form.get('selectedUser')?.touched">
         Selecting a user is required.
       </div>
     </div>
+
+
 
     <div class="separator"></div>
 
