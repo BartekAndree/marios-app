@@ -29,6 +29,7 @@ describe('My First Test', () => {
     addMariosPage.clickSend();
     addMariosPage.confirmSuccess();
     addMariosPage.clickBack();
+    cy.wait(1000);
 
     cy.url().should('include', '/profile');
     profilePage.getSentNumber().invoke('text').then((text) => {

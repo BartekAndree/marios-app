@@ -2,7 +2,11 @@ class AddMariosPage {
   selectUser(user: string) {
     cy.get("#user-select").click();
     cy.get('[role="listbox"]>mat-option').contains(user).click();
-    cy.get('.cdk-overlay-container').click(15, 40, { force: true });
+    cy.get('body').type('{esc}');
+
+    /*
+        cy.get('.cdk-overlay-container').click(15, 40, { force: true });
+    */
   }
 
   selectCategory(category: string) {
