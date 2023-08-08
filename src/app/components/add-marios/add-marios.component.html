@@ -48,7 +48,7 @@
       <div *ngIf="form.get('comment')?.hasError('maxLength') && form.get('comment')?.touched">
         Comment cannot be longer than 255 characters.
       </div>
-      <div class="character-count">{{ form.get('comment')?.value?.lenght || 0 }}/255</div>
+      <div class="character-count">{{ form.get('comment')?.value?.length || 0 }}/255</div>
     </div>
 
     <button type="submit" class="submit-button">SEND</button>

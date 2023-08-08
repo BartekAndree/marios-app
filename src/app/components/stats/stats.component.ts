@@ -24,4 +24,18 @@ export class StatsComponent {
     this.countSentMarios = this._sentMarios.length;
   }
 
+  calculatePosition(count: number): string {
+    let position = '0px';
+    const numberOfCharacters = count.toString().length;
+
+    if (numberOfCharacters === 1) {
+      position = '65px';
+    } else if (numberOfCharacters === 2) {
+      position = '35px';
+    }
+
+    return position;
+  }
+
+
 }
