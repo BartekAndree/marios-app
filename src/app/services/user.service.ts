@@ -8,26 +8,30 @@ import {Marios} from "../interfaces/marios";
   providedIn: 'root'
 })
 export class UserService {
+
   private usersUrl: string = 'api/user/';
   private usersData: PublicUser[] = [];
   private publicUsers$ = new BehaviorSubject<PublicUser[]>([]);
 
-  private currentUser: string = "33352115-4efe-4c0a-8123-a08f9a6b8cca";
+  private currentUser: string = "2080d86d-6225-4243-a1a2-db4949ebbf40";
   public allMarios: Marios[] = [];
   public receivedMarios: Marios[] = [];
   public sentMarios: Marios[] = [];
   private allMarios$ = new BehaviorSubject<Marios[]>(this.allMarios);
   private receivedMarios$ = new BehaviorSubject<Marios[]>(this.receivedMarios);
   private sentMarios$ = new BehaviorSubject<Marios[]>(this.sentMarios);
+  private _currentUser$ = new BehaviorSubject<string>(this.currentUser);
 
   constructor(private http: HttpClient) {
   }
-  get getCurrentUser(): string {
+
+  get getCurrentUser() {
     return this.currentUser;
   }
 
+
   get AllMarios(): Observable<Marios[]> {
-    if(this.allMarios.length === 0) {
+    if (this.allMarios.length === 0) {
       this.fetchAllMarios();
     }
     return this.allMarios$.asObservable();
@@ -42,7 +46,7 @@ export class UserService {
   }
 
   get ReceivedMarios(): Observable<Marios[]> {
-    if(this.receivedMarios.length === 0) {
+    if (this.receivedMarios.length === 0) {
       this.fetchReceivedMarios();
     }
     return this.receivedMarios$.asObservable();
@@ -57,7 +61,7 @@ export class UserService {
   }
 
   get SentMarios(): Observable<Marios[]> {
-    if(this.sentMarios.length === 0) {
+    if (this.sentMarios.length === 0) {
       this.fetchSentMarios();
     }
     return this.sentMarios$.asObservable();
@@ -98,11 +102,14 @@ export class UserService {
   getReceivedMariosByUuid(uuid: string): Observable<Marios[]> {
     return this.http.get<Marios[]>(this.usersUrl + uuid + '/received');
   }
+
   getSentMariosByUuid(uuid: string): Observable<Marios[]> {
     return this.http.get<Marios[]>(this.usersUrl + uuid + '/given');
   }
+
   removeElementFromPublicUserListByUUID(arr: PublicUser[], uuidToRemove: string): PublicUser[] {
     return arr.filter((user) => user.uuid !== uuidToRemove);
   }
+
 
 }

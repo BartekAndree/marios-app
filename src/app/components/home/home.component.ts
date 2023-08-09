@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {PublicUser} from "../../interfaces/user";
+import {UserService} from "../../services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -7,17 +9,20 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  users: PublicUser[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
-    this.getUsers();
+    this.userService.publicUsers
+      .subscribe((data: PublicUser[]) => {
+        this.users = data;
+      })
   }
 
-  getUsers() {
-    this.http.get('/api/user/all').subscribe(res => {
-      console.log(res);
-    });
+  setActiveUser(uuid: string) {
+    this.router.navigate(['/profile']);
   }
+
 }

@@ -20,8 +20,8 @@ describe('My First Test', () => {
       countBefore = Number(text);
     });
     profilePage.clickAddMarios();
-    cy.url().should('include', '/add');
 
+    addMariosPage.checkIfAddMariosPage()
     addMariosPage.selectUser(userSelect);
     addMariosPage.selectCategory(categorySelect);
     addMariosPage.typeTitle(titleInput);
@@ -31,7 +31,7 @@ describe('My First Test', () => {
     addMariosPage.clickBack();
     cy.wait(1000);
 
-    cy.url().should('include', '/profile');
+    profilePage.checkIfProfilePage();
     profilePage.getSentNumber().invoke('text').then((text) => {
       countAfter = Number(text);
     });
@@ -41,10 +41,7 @@ describe('My First Test', () => {
     });
 
     profilePage.clickSeeMore();
-    cy.contains(userSelect);
-    cy.contains(categorySelect);
-    cy.contains(titleInput);
-    cy.contains(commentInput);
+    profilePage.checkIfModalContains(userSelect, categorySelect, titleInput, commentInput)
     profilePage.closeSeeMore();
   });
 });

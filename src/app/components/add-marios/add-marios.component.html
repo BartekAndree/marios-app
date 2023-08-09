@@ -9,7 +9,7 @@
           <mat-option *ngFor="let user of users" [value]="user.uuid">{{ user.userName }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <div *ngIf="form.get('selectedUser')?.hasError('required') && form.get('selectedUser')?.touched">
+      <div class="validation" *ngIf="form.get('selectedUser')?.hasError('required') && form.get('selectedUser')?.touched">
         Selecting a user is required.
       </div>
     </div>
@@ -23,7 +23,7 @@
       <select id="category-select" formControlName="selectedCategory">
         <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
       </select>
-      <div *ngIf="form.get('selectedCategory')?.hasError('required') && form.get('selectedCategory')?.touched">
+      <div class="validation" *ngIf="form.get('selectedCategory')?.hasError('required') && form.get('selectedCategory')?.touched">
         Selecting a category is required.
       </div>
     </div>
@@ -33,10 +33,10 @@
     <div class="title-input">
       <label for="title">Title:</label>
       <input type="text" id="title" formControlName="title" placeholder="Enter marios title">
-      <div *ngIf="form.get('title')?.hasError('required') && form.get('title')?.touched">
+      <div class="validation" *ngIf="form.get('title')?.hasError('required') && form.get('title')?.touched">
         Title is required.
       </div>
-      <div *ngIf="form.get('title')?.hasError('maxLength') && form.get('title')?.touched">
+      <div class="validation" *ngIf="form.get('title')?.hasError('maxLength') && form.get('title')?.touched">
         Title cannot be longer than 100 characters.
       </div>
     </div>
@@ -46,10 +46,10 @@
     <div class="comment-input">
       <label for="comment">Comment:</label>
       <textarea id="comment" formControlName="comment" rows="3" cols="50" maxlength="255"></textarea>
-      <div *ngIf="form.get('comment')?.hasError('required') && form.get('comment')?.touched">
+      <div class="validation" *ngIf="form.get('comment')?.hasError('required') && form.get('comment')?.touched">
         Comment is required.
       </div>
-      <div *ngIf="form.get('comment')?.hasError('maxLength') && form.get('comment')?.touched">
+      <div class="validation" *ngIf="form.get('comment')?.hasError('maxLength') && form.get('comment')?.touched">
         Comment cannot be longer than 255 characters.
       </div>
       <div class="character-count">{{ form.get('comment')?.value?.length || 0 }}/255</div>

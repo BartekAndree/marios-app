@@ -1,6 +1,6 @@
 .form-container {
   width: 1040px;
-  height: 587px;
+  height: 610px;
   margin: 20px auto;
   border-radius: 5px;
   background-color: #ffffff;
@@ -113,6 +113,10 @@ svg {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.validation{
+  color:red;
 }
 
 

@@ -3,10 +3,6 @@ class AddMariosPage {
     cy.get("#user-select").click();
     cy.get('[role="listbox"]>mat-option').contains(user).click();
     cy.get('body').type('{esc}');
-
-    /*
-        cy.get('.cdk-overlay-container').click(15, 40, { force: true });
-    */
   }
 
   selectCategory(category: string) {
@@ -31,6 +27,10 @@ class AddMariosPage {
 
   clickBack() {
     cy.contains("BACK").click();
+  }
+
+  checkIfAddMariosPage() {
+    cy.contains("Who do you want to recognize?")
   }
 }
 

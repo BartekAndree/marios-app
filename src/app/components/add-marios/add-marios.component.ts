@@ -30,9 +30,7 @@ export class AddMariosComponent implements OnInit {
     });
   }
 
-  ngOnInit()
-    :
-    void {
+  ngOnInit(): void {
     this.userService.publicUsers
       .subscribe((data: PublicUser[]) => {
         this.users = data;

@@ -18,6 +18,16 @@ class ProfilePage {
   closeSeeMore() {
     cy.get(".close-button").click();
   }
+
+  checkIfProfilePage() {
+    cy.contains("LAST MARIOS:");
+  }
+
+  checkIfModalContains(...strings: string[]) {
+    strings.forEach((str) => {
+      cy.contains(str);
+    })
+  }
 }
 
 export default ProfilePage;

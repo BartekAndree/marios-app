@@ -14,7 +14,7 @@ export class ProfileComponent {
   public receivedMarios: Marios[] = [];
   public sentMarios: Marios[] = [];
 
-  constructor(private userService: UserService) {
+  constructor(public userService: UserService) {
   }
 
   ngOnInit() {
