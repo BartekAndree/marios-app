@@ -20,13 +20,19 @@ export class UserService {
   private allMarios$ = new BehaviorSubject<Marios[]>(this.allMarios);
   private receivedMarios$ = new BehaviorSubject<Marios[]>(this.receivedMarios);
   private sentMarios$ = new BehaviorSubject<Marios[]>(this.sentMarios);
-  private _currentUser$ = new BehaviorSubject<string>(this.currentUser);
-
   constructor(private http: HttpClient) {
+    this.currentUser = localStorage.getItem('currentUser')||"";
   }
 
   get getCurrentUser() {
     return this.currentUser;
+  }
+  set setCurrentUser(value: string) {
+    this.currentUser = value;
+    localStorage.setItem('currentUser', value);
+    this.fetchAllMarios();
+    this.fetchReceivedMarios();
+    this.fetchSentMarios();
   }
 
 

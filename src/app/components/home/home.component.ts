@@ -22,6 +22,7 @@ export class HomeComponent {
   }
 
   setActiveUser(uuid: string) {
+    this.userService.setCurrentUser = uuid;
     this.router.navigate(['/profile']);
   }
 
