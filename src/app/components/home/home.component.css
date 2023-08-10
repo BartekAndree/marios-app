@@ -6,7 +6,7 @@ div {
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #000000;
-  font-family: "Open Sans",serif;
+  font-family: "Open Sans",sans-serif;
   font-weight: 800;
   width: 50%;
   margin: 20px auto;
@@ -22,10 +22,12 @@ button {
   border: none;
   background-color: #FFDF24;
   color: black;
+  font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
-  font-family: "Open Sans",serif;
+  font-family: "Open Sans",sans-serif;
+  outline: #FFFFFF solid 2px;
 }
 
 button:hover {
