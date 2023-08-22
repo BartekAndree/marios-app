@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Marios} from "../../interfaces/marios";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ export class ProfileComponent {
   public receivedMarios: Marios[] = [];
   public sentMarios: Marios[] = [];
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, public router: Router) {
   }
 
   ngOnInit() {
@@ -31,5 +32,9 @@ export class ProfileComponent {
       .subscribe((marios: Marios[]) => {
         this.sentMarios = marios;
       })
+  }
+
+  onClickAddButton() {
+    this.router.navigateByUrl("/add");
   }
 }

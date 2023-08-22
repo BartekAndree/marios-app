@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Marios} from "../../interfaces/marios";
+import {count} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-stats',
@@ -7,6 +9,8 @@ import {Marios} from "../../interfaces/marios";
   styleUrls: ['./stats.component.css']
 })
 export class StatsComponent {
+  constructor(public router: Router) {
+  }
   private _receivedMarios: Marios[] = [];
   private _sentMarios: Marios[] = [];
   public countReceivedMarios: number = 0;
@@ -35,6 +39,13 @@ export class StatsComponent {
     }
 
     return position;
+  }
+
+  onClickReceived() {
+    this.router.navigateByUrl("/received");
+  }
+  onClickSent() {
+    this.router.navigateByUrl("/sent");
   }
 
 
